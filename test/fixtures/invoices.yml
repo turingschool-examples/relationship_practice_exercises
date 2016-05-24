@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  total: MyString
+  customer: 
+
+two:
+  date: MyString
+  total: MyString
+  customer: 

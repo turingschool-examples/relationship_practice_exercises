@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  composer: MyString
+  milliseconds: 1
+  unit_price: 9.99
+  bytes: 1
+  genre_id: 
+  album_id: 
+  media_type_id: 
+
+two:
+  name: MyString
+  composer: MyString
+  milliseconds: 1
+  unit_price: 9.99
+  bytes: 1
+  genre_id: 
+  album_id: 
+  media_type_id: 
