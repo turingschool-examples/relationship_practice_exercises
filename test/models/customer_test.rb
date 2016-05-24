@@ -26,13 +26,6 @@ class CustomerTest < ActiveSupport::TestCase
     assert_equal "Macarroni", customer.employee.last_name
   end
 
-  test "a customer can be assigned a postal code" do
-    zip = PostalCode.create(zipcode: "80205")
-    customer = Customer.create(postal_code: zip)
-
-    assert_equal "80205", customer.postal_code.zipcode
-  end
-
   test "a customer can have many different invoices" do
     customer = Customer.create(first_name: "Chal", last_name: "Lly")
 
