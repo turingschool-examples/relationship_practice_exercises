@@ -8,14 +8,6 @@ class InvoiceTest < ActiveSupport::TestCase
     assert invoice.respond_to?(:total)
   end
 
-  test "an invoice belongs to a customer" do
-    customer = Customer.create(first_name: "Lucky")
-
-    invoice = Invoice.create(total: "10", customer: customer)
-
-    assert_equal "Lucky", invoice.customer.first_name
-  end
-
   test "an invoice has many invoice items and can find the tracks name" do
     track1 = Track.create(name: "Track1")
     track2 = Track.create(name: "Track2")
