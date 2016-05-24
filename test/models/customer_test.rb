@@ -14,35 +14,10 @@ class CustomerTest < ActiveSupport::TestCase
     assert customer.respond_to?(:email)
   end
 
-  test "a customer can have an employee represent them" do
-    employee = Employee.create(first_name: "Sally", last_name: "Macarroni")
+  test "a customer has a profile" do
+    customer = Customer.create(first_name: "You")
+    Profile.create(password: "password", customer: customer)
 
-    customer = Customer.create(first_name: "Stan",
-                               last_name: "Nats",
-                               employee: employee
-                               )
-
-    assert_equal "Sally", customer.employee.first_name
-    assert_equal "Macarroni", customer.employee.last_name
-  end
-
-  test "a customer can be assigned a postal code" do
-    zip = PostalCode.create(zipcode: "80205")
-    customer = Customer.create(postal_code: zip)
-
-    assert_equal "80205", customer.postal_code.zipcode
-  end
-
-  test "a customer can have many different invoices" do
-    customer = Customer.create(first_name: "Chal", last_name: "Lly")
-
-    customer.invoices << [
-      Invoice.create(total: "100"),
-      Invoice.create(total: "50"),
-      Invoice.create(total: "10")
-    ]
-
-    assert_equal 3, customer.invoices.count
-    assert_equal "10", customer.invoices.last.total
+    assert_equal "password", customer.profile.password
   end
 end

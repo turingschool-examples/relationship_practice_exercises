@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524055550) do
+ActiveRecord::Schema.define(version: 20160524154404) do
 
   create_table "albums", force: :cascade do |t|
     t.string   "title"
@@ -117,6 +117,17 @@ ActiveRecord::Schema.define(version: 20160524055550) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.string   "photo"
+    t.string   "cc_number"
+    t.string   "password"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "profiles", ["customer_id"], name: "index_profiles_on_customer_id"
 
   create_table "tracks", force: :cascade do |t|
     t.string   "name"
