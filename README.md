@@ -11,4 +11,4 @@
 * branch `one-to-many-part2`
 * branch `many-to-many-part1`
 * branch `many-to-many-part2`
-* branch `one-to-one-part1`
+* branch `has-one-part1`
