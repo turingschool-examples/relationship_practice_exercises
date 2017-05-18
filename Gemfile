@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "~> 2.3.0"
 
 gem 'rails', '4.2.6'
 gem 'sqlite3'
@@ -16,6 +16,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails', '~> 3.5'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe MediaType do
+RSpec.describe Playlist do
   describe "attributes" do
     it "has a name" do
-      media = MediaType.new
+      playlist = Playlist.new
 
-      expect(media).to respond_to(:name)
+      expect(playlist).to respond_to(:name)
     end
   end
 
@@ -14,11 +14,13 @@ RSpec.describe MediaType do
   end
 
   describe "associations" do
-    it "a media type can have multiple tracks" do
-      media_type  = MediaType.create(name: "LazerDisk")
-      media_type2 = MediaType.create(name: "mp3")
-      album       = Album.create(title: "Ring Away")
-      genre       = Genre.create(name: "R&B")
+    it { is_expected.to have_many(:playlist_tracks) }
+
+    it "has many tracks" do
+      playlist   = Playlist.create(name: "Jamz")
+      album      = Album.create(title: "Ring Away")
+      genre      = Genre.create(name: "R&B")
+      media_type = MediaType.create(name: "mp3")
 
       track1 = Track.create(
         name: "Big Poppa", 
@@ -38,14 +40,14 @@ RSpec.describe MediaType do
         name: "Small Father", 
         genre: genre,
         album: album,
-        media_type: media_type2,
+        media_type: media_type,
         milliseconds: 10
       )
 
-      expect(Track.count).to eq 3
-      expect(media_type.tracks.count).to eq 2
-      expect(media_type.tracks.last.name).to eq "Pig Boppa"
+      playlist.tracks << [track1, track2]
+
+      expect(Track.all).to match_array [track1, track2, track3]
+      expect(playlist.tracks).to match_array [track1, track2]
     end
   end
 end
-
