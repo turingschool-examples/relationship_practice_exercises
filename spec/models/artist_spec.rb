@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Artist do
   describe "attributes" do
     it "has a name" do
-      artist = Artist.new
+      artist = build(:artist)
       expect(artist).to respond_to(:name)
     end
   end
@@ -15,14 +15,11 @@ RSpec.describe Artist do
 
   describe "associations" do
     it "has many albums" do
-      artist  = Artist.create(name: "The Avett Brothers")
-      artist2 = Artist.create(name: "The Head and the Heart")
-      album1  = Album.create(title: "Mignonette", artist: artist)
-      album2  = Album.create(title: "Emotionalism", artist: artist)
-      album3  = Album.create(title: "Signs of Light", artist: artist2)
+      artist  = create(:artist, :with_albums, album_count: 2)
+      artist2 = create(:artist, :with_albums, album_count: 1)
 
-      expect(Album.all).to match_array [album1, album2, album3]
-      expect(artist.albums).to match_array [album1, album2]
+      expect(Album.count).to eq 3
+      expect(artist.albums.count).to eq 2
     end
   end
 end
