@@ -15,11 +15,8 @@ RSpec.describe Album do
 
   describe "associations" do
     it "it has many tracks" do
-      album  = create(:album) 
-      album2 = create(:album, title: "DIFFERENT")
-
-      create_list(:track, 3, album: album)
-      create(:track, album: album2)
+      album  = create(:album, :with_tracks, track_count: 3) 
+      album2 = create(:album, :with_tracks, track_count: 1)
 
       expect(Track.count).to eq 4
       expect(album.tracks.count).to eq 3
